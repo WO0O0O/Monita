@@ -10,7 +10,6 @@ import {
   CircularProgress,
   Chip,
   Button,
-  Divider,
   Alert,
   Table,
   TableBody,
@@ -24,7 +23,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ErrorIcon from '@mui/icons-material/Error';
 import EditIcon from '@mui/icons-material/Edit';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import { getWebsiteStatus, getWebsiteChecks } from '../services/api';
+import { getWebsite, getWebsiteStatus, getWebsiteChecks } from '../services/api';
 
 function WebsiteDetail() {
   const { id } = useParams();
@@ -39,26 +38,44 @@ function WebsiteDetail() {
     pages: 0
   });
 
-  // Fetch website status
+  // Fetch website details and status
   useEffect(() => {
-    const fetchWebsiteStatus = async () => {
+    const fetchWebsiteData = async () => {
       try {
         setLoading(true);
-        const data = await getWebsiteStatus(id);
-        setWebsite(data.website);
-        setChecks(data.recent_checks || []);
+        
+        // First fetch the website details
+        const websiteData = await getWebsite(id);
+        setWebsite(websiteData);
+        
+        // Then fetch the status information
+        const statusData = await getWebsiteStatus(id);
+        // Update status information
+        setChecks(statusData.history || []);
+        
+        // Update the website with the latest status
+        setWebsite(prevWebsite => ({
+          ...prevWebsite,
+          latest_status: {
+            is_up: statusData.status === 'up',
+            response_time: statusData.response_time_ms,
+            status_code: statusData.status_code,
+            last_checked: statusData.last_checked
+          }
+        }));
+        
         setError(null);
       } catch (err) {
         setError('Failed to load website details. Please try again later.');
-        console.error('Error fetching website status:', err);
+        console.error('Error fetching website data:', err);
       } finally {
         setLoading(false);
       }
     };
 
-    fetchWebsiteStatus();
+    fetchWebsiteData();
     // Refresh data every 30 seconds
-    const interval = setInterval(fetchWebsiteStatus, 30000);
+    const interval = setInterval(fetchWebsiteData, 30000);
     
     return () => clearInterval(interval);
   }, [id]);
@@ -206,7 +223,7 @@ function WebsiteDetail() {
                     <strong>Response Time:</strong> {website.latest_status.response_time_ms}ms
                   </Typography>
                   <Typography variant="body2">
-                    <strong>Checked At:</strong> {new Date(website.latest_status.checked_at).toLocaleString()}
+                    <strong>Checked At:</strong> {website.latest_status.last_checked ? new Date(website.latest_status.last_checked).toLocaleString() : 'Pending'}
                   </Typography>
                   {website.latest_status.error_message && (
                     <Typography variant="body2" color="error">

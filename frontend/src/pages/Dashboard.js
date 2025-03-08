@@ -15,42 +15,51 @@ import {
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import ErrorIcon from '@mui/icons-material/Error';
 import TimerIcon from '@mui/icons-material/Timer';
-import { getWebsites } from '../services/api';
+import { getWebsites, getDashboardStats } from '../services/api';
 
 function Dashboard() {
   const [websites, setWebsites] = useState([]);
+  const [stats, setStats] = useState({
+    total_websites: 0,
+    websites_up: 0,
+    websites_down: 0,
+    avg_response_time: 0,
+    last_updated: null
+  });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Calculate statistics
-  const totalWebsites = websites.length;
-  const websitesUp = websites.filter(site => 
-    site.latest_status && site.latest_status.is_up
-  ).length;
-  const websitesDown = websites.filter(site => 
-    site.latest_status && !site.latest_status.is_up
-  ).length;
-  const websitesUnknown = totalWebsites - websitesUp - websitesDown;
+  // Calculate website stats we still need to display
+  const totalWebsites = stats.total_websites;
+  const websitesUp = stats.websites_up;
+  const websitesDown = stats.websites_down;
 
-  // Load website data
+  // Load website data and stats
   useEffect(() => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        const data = await getWebsites();
-        setWebsites(data);
+        // Fetch websites and dashboard stats in parallel
+        const [websitesData, statsData] = await Promise.all([
+          getWebsites(),
+          getDashboardStats()
+        ]);
+        
+        setWebsites(websitesData);
+        setStats(statsData);
         setError(null);
+        console.log('Dashboard updated:', new Date().toLocaleTimeString());
       } catch (err) {
-        setError('Failed to load websites. Please try again later.');
-        console.error('Error fetching websites:', err);
+        setError('Failed to load dashboard data. Please try again later.');
+        console.error('Error fetching dashboard data:', err);
       } finally {
         setLoading(false);
       }
     };
 
     fetchData();
-    // Refresh data every 30 seconds
-    const interval = setInterval(fetchData, 30000);
+    // Refresh data every 15 seconds
+    const interval = setInterval(fetchData, 15000);
     
     return () => clearInterval(interval);
   }, []);
@@ -185,7 +194,7 @@ function Dashboard() {
                         Response Time: {website.latest_status.response_time_ms}ms
                       </Typography>
                       <Typography variant="body2">
-                        Last Checked: {new Date(website.latest_status.checked_at).toLocaleString()}
+                        Last Checked: {website.latest_status.last_checked ? new Date(website.latest_status.last_checked).toLocaleString() : 'Pending'}
                       </Typography>
                     </Box>
                   )}

@@ -131,4 +131,18 @@ export const getWebsiteChecks = async (id, page = 1, perPage = 20) => {
   }
 };
 
+/**
+ * Get dashboard statistics
+ * @returns {Promise<Object>} Dashboard statistics
+ */
+export const getDashboardStats = async () => {
+  try {
+    const response = await api.get('/dashboard');
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching dashboard stats:', error);
+    throw error;
+  }
+};
+
 export default api;
