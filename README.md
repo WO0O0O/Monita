@@ -6,9 +6,6 @@
   <img src="https://img.shields.io/badge/Built%20with-Flask%20%26%20React-61DAFB?style=for-the-badge" alt="Built with"/>
 </div>
 
-<p align="center">
-  <img src="https://via.placeholder.com/800x400?text=UpMon+Dashboard" alt="UpMon Dashboard Preview" width="80%"/>
-</p>
 
 ## 🔍 Overview
 
