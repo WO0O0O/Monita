@@ -34,7 +34,7 @@ function AppHeader({ onDrawerToggle }) {
           component="div"
           sx={{ flexGrow: 1 }}
         >
-          UpMon - Website Uptime Monitoring
+          Monita - Website Uptime Monitoring
         </Typography>
         <IconButton color="inherit">
           <Badge badgeContent={0} color="error">

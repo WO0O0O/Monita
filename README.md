@@ -1,4 +1,4 @@
-# UpMon - Website Uptime Monitoring Made Simple
+# Monita - Website Uptime Monitoring Made Simple
 
 <div align="center">
   <img src="https://img.shields.io/badge/Status-Active-success?style=for-the-badge" alt="Status"/>
@@ -9,7 +9,7 @@
 
 ## 🔍 Overview
 
-**UpMon** is a lightweight, modern website uptime monitoring solution that helps you keep track of your web services' availability and performance. With real-time monitoring, intuitive dashboards, and detailed analytics, you'll never be caught off guard by website downtime again.
+**Monita** is a lightweight, modern website uptime monitoring solution that helps you keep track of your web services' availability and performance. With real-time monitoring, intuitive dashboards, and detailed analytics, you'll never be caught off guard by website downtime again.
 
 ## ✨ Key Features
 
@@ -31,8 +31,8 @@
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/UpMon.git
-   cd UpMon
+   git clone https://github.com/yourusername/Monita.git
+   cd Monita
    ```
 
 2. Set up the backend:
@@ -53,7 +53,7 @@
 
 ## 🖥️ How It Works
 
-UpMon consists of two main components:
+Monita consists of two main components:
 
 1. **Backend (Flask)**: Handles website monitoring, data storage, and provides a RESTful API
 2. **Frontend (React)**: Delivers a responsive user interface to manage and view monitoring data
@@ -78,7 +78,7 @@ The system performs regular HTTP requests to check if your websites are respondi
 
 ## 🤝 Contributing
 
-Contributions are welcome! Feel free to open issues or submit pull requests to help improve UpMon.
+Contributions are welcome! Feel free to open issues or submit pull requests to help improve Monita.
 
 ## 📄 License
 
