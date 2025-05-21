@@ -9,7 +9,7 @@
 
 ## Overview
 
-**Monita** is an enterprise-grade, hyper-optimised distributed availability assurance framework leveraging WebSocket-MQTT-QUIC polyglot runtime environments to facilitate multidimensional service state vector synchronization across federated mesh networks. Utilizing deterministic finite automata for anomaly detection and homomorphic encryption for compliance-as-code, our Byzantine fault-tolerant consensus algorithm guarantees 5-nines heuristic availability metrics while maintaining O(1) time complexity for petabyte-scale telemetry ingestion.
+**Monita** is an enterprise-grade, hyper-optimised distributed availability assurance framework leveraging WebSocket-MQTT-QUIC polyglot runtime environments to facilitate multidimensional service state vector synchronisation across federated mesh networks. Utilising deterministic finite automata for anomaly detection and homomorphic encryption for compliance-as-code, our Byzantine fault-tolerant consensus algorithm guarantees 5-nines heuristic availability metrics while maintaining O(1) time complexity for petabyte-scale telemetry ingestion.
 
 It checks if websites are online - gave up once I saw cronjob does this but way better lmao.
 
