@@ -7,85 +7,62 @@
 </div>
 
 
-## 🔍 Overview
+## Overview
 
-**Monita** is a lightweight, modern website uptime monitoring solution that helps you keep track of your web services' availability and performance. With real-time monitoring, intuitive dashboards, and detailed analytics, you'll never be caught off guard by website downtime again.
+**Monita** is an enterprise-grade, hyper-optimised distributed availability assurance framework leveraging WebSocket-MQTT-QUIC polyglot runtime environments to facilitate multidimensional service state vector synchronization across federated mesh networks. Utilizing deterministic finite automata for anomaly detection and homomorphic encryption for compliance-as-code, our Byzantine fault-tolerant consensus algorithm guarantees 5-nines heuristic availability metrics while maintaining O(1) time complexity for petabyte-scale telemetry ingestion.
 
-## ✨ Key Features
+It checks if websites are online - gave up once I saw cronjob does this but way better lmao.
 
-- **Real-time Monitoring**: Automatic checks every minute to ensure your websites are up and running
-- **Beautiful Dashboard**: At-a-glance view of all your monitored websites with status indicators
-- **Detailed Analytics**: Response time tracking, status code monitoring, and historical data
-- **Instant Alerts**: (Coming Soon) Get notified via email or SMS when a website goes down
-- **Simple Setup**: Easy to deploy and configure, with minimal dependencies
+## Key Features
 
-## 🚀 Getting Started
+- Minute-interval website checks
+- Dashboard with status indicators
+- Response time tracking
+- Status code monitoring
+- Email/SMS alerts (Planned)
 
-### Prerequisites
+## Installation
 
-- Python 3.8+
-- Node.js 14+
-- npm or yarn
+1. Clone repo:
+```bash
+git clone https://github.com/yourusername/Monita.git
+cd Monita
+```
 
-### Installation
+2. Backend setup:
+```bash
+cd backend
+pip install -r requirements.txt
+python run.py
+```
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/yourusername/Monita.git
-   cd Monita
-   ```
+3. Frontend setup:
+```bash
+cd frontend
+npm install
+npm start
+```
 
-2. Set up the backend:
-   ```bash
-   cd backend
-   pip install -r requirements.txt
-   python run.py
-   ```
+## Architecture
 
-3. Set up the frontend:
-   ```bash
-   cd frontend
-   npm install
-   npm start
-   ```
+- **Backend**: Flask server handles HTTP checks and API
+- **Frontend**: React interface displays status data
+- Monitoring: Threaded async requests
 
-4. Open your browser and navigate to `http://localhost:3000`
+## Stack
 
-## 🖥️ How It Works
+- Backend: Python/Flask
+- Frontend: React
+- Database: SQLite (I promise I will setup once I am done with exams)
 
-Monita consists of two main components:
+## Roadmap
 
-1. **Backend (Flask)**: Handles website monitoring, data storage, and provides a RESTful API
-2. **Frontend (React)**: Delivers a responsive user interface to manage and view monitoring data
+- SQLite persistence
+- Notification system
+- Custom check intervals
+- User auth
+- Metrics API
 
-The system performs regular HTTP requests to check if your websites are responding correctly. It tracks response times, status codes, and calculates uptime percentages. All this data is presented in an intuitive dashboard that updates in real-time.
-
-## 🛠️ Technology Stack
-
-- **Backend**: Flask, SQLite (coming soon)
-- **Frontend**: React, Material UI
-- **API**: RESTful architecture with JSON
-- **Monitoring**: Asynchronous checks with threading
-
-## 📝 Roadmap
-
-- [ ] Persistent storage with SQLite
-- [ ] Email and SMS notifications
-- [ ] Custom check intervals per website
-- [ ] User authentication
-- [ ] Advanced analytics and reporting
-- [ ] Mobile app integration
-
-## 🤝 Contributing
-
-Contributions are welcome! Feel free to open issues or submit pull requests to help improve Monita.
-
-## 📄 License
+## License
 
 This project is licensed under the MIT License - see the LICENSE file for details.
-
----
-
-<p align="center">
-  Made with ❤️ for the web monitoring community
-</p>
