@@ -21,6 +21,14 @@ It checks if websites are online - gave up once I saw cronjob does this but way 
 - Status code monitoring
 - Email/SMS alerts (Planned)
 
+## Screenshots
+
+### Dashboard View
+![Dashboard view showing website status summary](images/dashboard.jpeg)
+
+### Websites Management
+![Website management interface](images/websites.jpeg)
+
 ## Installation
 
 1. Clone repo:
